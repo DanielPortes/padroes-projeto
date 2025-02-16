@@ -1,42 +1,73 @@
 #!/bin/bash
 
-echo "Digite o nome do exercício ou pasta (exemplo: exercicio01): "
-read EXERCICIO
+# Configura o script para encerrar em caso de erro
+set -e
 
-DEST=../$EXERCICIO-repo
+# Solicita o nome do exercício ou pasta
+read -p "Digite o nome do exercício ou pasta (exemplo: exercicio01): " EXERCICIO
 
-# Criar diretório temporário
-mkdir -p $DEST/src/main/java/padroescriacao
-mkdir -p $DEST/src/test/java/padroescriacao
+# Define o destino do repositório
+DEST="../${EXERCICIO}-repo"
 
-# Copiar arquivos necessários
-cp .gitignore $DEST/
-cp pom.xml $DEST/
-cp README.md $DEST/
-cp ./diagramas/diagrama_$EXERCICIO.png $DEST/
-cp -r src/main/java/padroescriacao/$EXERCICIO $DEST/src/main/java/padroescriacao/
-cp -r src/test/java/padroescriacao/$EXERCICIO $DEST/src/test/java/padroescriacao/
+# Cria diretórios necessários
+echo "Criando estrutura de diretórios em $DEST..."
+mkdir -p "$DEST/src/main/java/padroescriacao"
+mkdir -p "$DEST/src/test/java/padroescriacao"
 
-# Inicializar repositório
-cd $DEST
+# Copia arquivos essenciais com validação
+echo "Copiando arquivos necessários..."
+[ -f .gitignore ] && cp .gitignore "$DEST/" || echo "Aviso: .gitignore não encontrado."
+[ -f pom.xml ] && cp pom.xml "$DEST/" || echo "Aviso: pom.xml não encontrado."
+[ -f README.md ] && cp README.md "$DEST/" || echo "Aviso: README.md não encontrado."
+[ -f "./diagramas/diagrama_${EXERCICIO}.png" ] && cp "./diagramas/diagrama_${EXERCICIO}.png" "$DEST/" || echo "Aviso: Diagrama não encontrado."
 
-# create a readme file
-echo "# Padrões de projeto
- ____
-  ## $EXERCICIO<br><br>![diagrama_$EXERCICIO.png](diagrama_exercicio01.png)" > README.md
+# Copia os diretórios do exercício, se existirem
+if [ -d "src/main/java/padroescriacao/${EXERCICIO}" ]; then
+    cp -r "src/main/java/padroescriacao/${EXERCICIO}" "$DEST/src/main/java/padroescriacao/"
+else
+    echo "Aviso: Código fonte não encontrado para $EXERCICIO."
+fi
 
+if [ -d "src/test/java/padroescriacao/${EXERCICIO}" ]; then
+    cp -r "src/test/java/padroescriacao/${EXERCICIO}" "$DEST/src/test/java/padroescriacao/"
+else
+    echo "Aviso: Testes não encontrados para $EXERCICIO."
+fi
+
+# Inicializa o repositório Git
+echo "Inicializando o repositório Git..."
+cd "$DEST" || exit
 git init
+
+# Cria ou sobrescreve o README.md
+cat <<EOF > README.md
+# Padrões de Projeto
+
+## $EXERCICIO
+![diagrama_${EXERCICIO}.png](diagrama_${EXERCICIO}.png)
+EOF
+
+# Cria o commit inicial
+echo "Criando commit inicial..."
+TODAY=$(date +'%Y-%m-%d')
+#OLD_COMMIT_DATE=$(date -R -d "10 years ago")
+GIT_COMMITTER_DATE="$TODAY" git commit --allow-empty -m "Iniciando exercício $EXERCICIO"
 git add .
-git commit -m "Isto eh um commit automatico $EXERCICIO"
+git commit -m "Adicionando arquivos para $EXERCICIO"
+
+# Solicita a URL do repositório remoto
+read -p "Digite a URL do repositório remoto: " URL
+
+# Adiciona o repositório remoto e faz o push
+git remote add origin "$URL"
 git branch -M main
-
-# read url input from user
-echo "Digite a URL do repositório remoto: "
-read url
-
-# Adicionar repositório remoto
-git remote add origin $url
 git push --force origin main
 
-echo "Repositório criado com sucesso"
-echo "Repositório remoto adicionado com sucesso em $url"
+echo "Repositório remoto configurado com sucesso em $URL."
+
+# Limpa diretório temporário
+echo "Limpando diretório temporário..."
+cd ..
+rm -rf "$DEST"
+
+echo "Repositório criado e enviado com sucesso!"
