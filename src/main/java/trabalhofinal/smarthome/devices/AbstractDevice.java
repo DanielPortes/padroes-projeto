@@ -51,7 +51,10 @@ public abstract class AbstractDevice implements Visitable {
     }
 
     public String execute(String command) {
-        return state.handleCommand(command);
+        String result = state.handleCommand(command);
+        // Atualizar estado após a execução do comando
+        state.updateState();
+        return result;
     }
 
     public String getStatus() {

@@ -40,13 +40,13 @@ public class PowerController implements SubSystem {
 
             case "USER_HOME":
                 LOGGER.info("Power controller responding to user home");
-                powerManager.setStrategy("Comfort Power Strategy");
+                // Nome corrigido da estratégia
+                powerManager.setStrategy("Comfort Mode");
                 powerManager.applyStrategy(trabalhofinal.smarthome.core.HomeCentral.getInstance().getDeviceManager().getAllDevices());
                 mediator.notify(this, "POWER_SAVING_MODE", "DISABLED");
                 break;
         }
     }
-
     public void reportExcessivePowerUsage() {
         LOGGER.warning("Excessive power usage detected");
         mediator.notify(this, "EXCESSIVE_POWER", trabalhofinal.smarthome.core.HomeCentral.getInstance().getDeviceManager().getActiveDeviceCount());

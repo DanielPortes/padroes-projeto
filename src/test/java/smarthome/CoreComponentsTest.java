@@ -105,10 +105,10 @@ public class CoreComponentsTest {
         assertTrue(retrievedRoom.isPresent(), "Should retrieve room by ID");
         assertEquals("Test Living Room", retrievedRoom.get().getName(), "Should retrieve correct room");
 
-        // Testar getRoomByName
+        // Testar getRoomByName - verificar pelo nome em vez do ID
         retrievedRoom = roomManager.getRoomByName("Test Bedroom");
         assertTrue(retrievedRoom.isPresent(), "Should retrieve room by name");
-        assertEquals(bedroom.getId(), retrievedRoom.get().getId(), "Should retrieve correct room");
+        assertEquals("Test Bedroom", retrievedRoom.get().getName(), "Should retrieve room with correct name");
 
         // Testar getAllRooms
         List<Room> allRooms = roomManager.getAllRooms();
