@@ -1,6 +1,5 @@
 package trabalhofinal.smarthome.observer;
 
-//package com.smarthome.observer;
 
 /**
  * Interface para classes observáveis (Publisher)

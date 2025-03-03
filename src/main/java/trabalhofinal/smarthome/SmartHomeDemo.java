@@ -19,8 +19,6 @@ import trabalhofinal.smarthome.observer.MobileAppNotifier;
 import trabalhofinal.smarthome.strategy.PowerManager;
 
 import java.time.LocalTime;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.logging.Logger;
 
 /**

@@ -2,7 +2,6 @@
  * Implementação concreta de Visitor para diagnóstico
  */
 package trabalhofinal.smarthome.visitor;
-//package com.smarthome.visitor;
 
 import trabalhofinal.smarthome.core.Room;
 import trabalhofinal.smarthome.devices.LightDevice;
@@ -54,7 +53,7 @@ public class DiagnosticVisitor implements HomeVisitor {
         report.append(room.getDevices().size()).append("\n");
 
         report.append("  Devices in Room:\n");
-        for (com.smarthome.devices.AbstractDevice device : room.getDevices()) {
+        for (trabalhofinal.smarthome.devices.AbstractDevice device : room.getDevices()) {
             report.append("    - ").append(device.getName());
             report.append(" (").append(device.isActive() ? "ON" : "OFF").append(")\n");
         }

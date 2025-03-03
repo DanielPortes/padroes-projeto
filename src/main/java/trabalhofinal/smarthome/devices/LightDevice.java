@@ -3,8 +3,6 @@
  */
 package trabalhofinal.smarthome.devices;
 
-import trabalhofinal.smarthome.visitor.AbstractDevice;
-
 public class LightDevice extends AbstractDevice {
     private int brightness;
 

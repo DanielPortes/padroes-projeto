@@ -2,7 +2,6 @@
  * Estado Ligado
  */
 package trabalhofinal.smarthome.states;
-//package com.smarthome.states;
 
 import trabalhofinal.smarthome.devices.AbstractDevice;
 

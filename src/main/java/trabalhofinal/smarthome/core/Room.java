@@ -1,10 +1,10 @@
 package trabalhofinal.smarthome.core;
 
-//package com.smarthome.core;
 
 import trabalhofinal.smarthome.devices.AbstractDevice;
 import trabalhofinal.smarthome.flyweight.RoomAttributes;
 import trabalhofinal.smarthome.flyweight.RoomAttributesFactory;
+import trabalhofinal.smarthome.visitor.Visitable;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 /**
  * Classe que representa um cômodo da casa
  */
-public class Room {
+public class Room  implements Visitable {
     private final String id;
     private final String name;
     private final RoomAttributes attributes;
@@ -85,6 +85,11 @@ public class Room {
         });
 
         return status.toString();
+    }
+
+    @Override
+    public String accept(trabalhofinal.smarthome.visitor.HomeVisitor visitor) {
+        return visitor.visitRoom(this);
     }
 }
 

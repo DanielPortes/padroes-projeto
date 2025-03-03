@@ -1,9 +1,7 @@
 package trabalhofinal.smarthome.core;
 
-//package com.smarthome.core;
 
 import trabalhofinal.smarthome.devices.AbstractDevice;
-import trabalhofinal.smarthome.observer.HomeEvent;
 
 import java.util.*;
 import java.util.stream.Collectors;

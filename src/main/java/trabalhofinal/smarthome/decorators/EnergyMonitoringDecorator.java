@@ -2,7 +2,6 @@
  * Decorator que adiciona monitoramento de energia
  */
 package trabalhofinal.smarthome.decorators;
-//package trabalhofinal.smarthome.decorators;
 
 import trabalhofinal.smarthome.devices.AbstractDevice;
 

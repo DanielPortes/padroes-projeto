@@ -2,7 +2,6 @@
  * Implementação concreta do mediador
  */
 package trabalhofinal.smarthome.mediator;
-//package com.smarthome.mediator;
 
 import java.util.ArrayList;
 import java.util.List;

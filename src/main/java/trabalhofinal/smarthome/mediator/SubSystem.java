@@ -3,8 +3,6 @@
  */
 package trabalhofinal.smarthome.mediator;
 
-import trabalhofinal.smarthome.core.HomeCentral;
-import trabalhofinal.smarthome.strategy.PowerManager;
 
 public interface SubSystem {
     String getName();

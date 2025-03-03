@@ -3,6 +3,8 @@ package smarthome;
 
 import trabalhofinal.smarthome.core.HomeCentral;
 import trabalhofinal.smarthome.core.Room;
+import trabalhofinal.smarthome.decorators.EnergyMonitoringDecorator;
+import trabalhofinal.smarthome.decorators.SecurityEnabledDecorator;
 import trabalhofinal.smarthome.devices.AbstractDevice;
 import trabalhofinal.smarthome.devices.LightDevice;
 import trabalhofinal.smarthome.factories.DeviceFactory;
@@ -90,17 +92,17 @@ public class SmartHomeTest {
         central.getDeviceManager().registerDevice(light);
 
         // Cria o processador de comandos
-        com.smarthome.command.CommandProcessor processor = new com.smarthome.command.CommandProcessor();
+        trabalhofinal.smarthome.command.CommandProcessor processor = new trabalhofinal.smarthome.command.CommandProcessor();
 
         // Testa um comando para dispositivo
-        com.smarthome.command.Command deviceCommand = new com.smarthome.command.Command("DEVICE", "Chain Test Light")
+        trabalhofinal.smarthome.command.Command deviceCommand = new trabalhofinal.smarthome.command.Command("DEVICE", "Chain Test Light")
                 .addParameter("action", "ON");
         String result = processor.processCommand(deviceCommand);
         assertTrue(result.contains("turned on"), "Device command should be processed");
         assertTrue(light.isActive(), "Device should be turned on");
 
         // Testa um comando para cômodo
-        com.smarthome.command.Command roomCommand = new com.smarthome.command.Command("ROOM", "Test Room")
+        trabalhofinal.smarthome.command.Command roomCommand = new trabalhofinal.smarthome.command.Command("ROOM", "Test Room")
                 .addParameter("action", "OFF");
         result = processor.processCommand(roomCommand);
         assertTrue(result.contains("turned off"), "Room command should be processed");
@@ -116,7 +118,7 @@ public class SmartHomeTest {
         central.getDeviceManager().registerDevice(light);
 
         // Cria o gerenciador de energia
-        com.smarthome.strategy.PowerManager powerManager = new com.smarthome.strategy.PowerManager();
+        trabalhofinal.smarthome.strategy.PowerManager powerManager = new trabalhofinal.smarthome.strategy.PowerManager();
 
         // Testa estratégia de máxima economia
         powerManager.setStrategy("Maximum Power Saving");
@@ -157,8 +159,8 @@ public class SmartHomeTest {
         LightDevice basicLight = philipsFactory.createLight("Basic Light");
 
         // Aplica decorador
-        AbstractDevice secureLight = new com.smarthome.decorators.SecurityEnabledDecorator(basicLight);
-        AbstractDevice monitoredSecureLight = new com.smarthome.decorators.EnergyMonitoringDecorator(secureLight);
+        AbstractDevice secureLight = new SecurityEnabledDecorator(basicLight);
+        AbstractDevice monitoredSecureLight = new EnergyMonitoringDecorator(secureLight);
 
         // Testa que o tipo e nome são preservados
         assertEquals("Light", monitoredSecureLight.getType(), "Decorator should preserve type");
@@ -173,7 +175,7 @@ public class SmartHomeTest {
     @Test
     public void testTemplateMethodPattern() {
         // Cria uma rotina personalizada para teste
-        com.smarthome.automation.AutomationRoutine routine = new com.smarthome.automation.AutomationRoutine("Test Routine") {
+        trabalhofinal.smarthome.automation.AutomationRoutine routine = new trabalhofinal.smarthome.automation.AutomationRoutine("Test Routine") {
             @Override
             protected String executeRoutineSteps() {
                 return "Custom routine steps executed";
@@ -191,11 +193,11 @@ public class SmartHomeTest {
     @Test
     public void testMediatorPattern() {
         // Cria mediador
-        com.smarthome.mediator.SmartHomeMediator mediator = new com.smarthome.mediator.CentralMediator();
+        trabalhofinal.smarthome.mediator.SmartHomeMediator mediator = new trabalhofinal.smarthome.mediator.CentralMediator();
 
         // Cria subsistemas
-        com.smarthome.mediator.PowerController powerController = new com.smarthome.mediator.PowerController(mediator);
-        com.smarthome.mediator.PresenceController presenceController = new com.smarthome.mediator.PresenceController(mediator);
+        trabalhofinal.smarthome.mediator.PowerController powerController = new trabalhofinal.smarthome.mediator.PowerController(mediator);
+        trabalhofinal.smarthome.mediator.PresenceController presenceController = new trabalhofinal.smarthome.mediator.PresenceController(mediator);
 
         // Testa comunicação via mediador
         presenceController.userLeft();

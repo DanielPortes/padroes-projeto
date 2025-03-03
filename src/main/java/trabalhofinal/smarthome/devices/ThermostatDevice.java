@@ -3,8 +3,6 @@
  */
 package trabalhofinal.smarthome.devices;
 
-import trabalhofinal.smarthome.visitor.AbstractDevice;
-
 public class ThermostatDevice extends AbstractDevice {
     private double temperature;
     private double targetTemperature;

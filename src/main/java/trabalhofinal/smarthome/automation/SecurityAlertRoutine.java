@@ -2,13 +2,9 @@
  * Rotina baseada em eventos
  */
 package trabalhofinal.smarthome.automation;
-//package com.smarthome.automation;
 
 import trabalhofinal.smarthome.core.HomeCentral;
 import trabalhofinal.smarthome.observer.HomeEvent;
-import trabalhofinal.smarthome.strategy.MaxEconomyPowerStrategy;
-import trabalhofinal.smarthome.strategy.PowerManager;
-import trabalhofinal.smarthome.strategy.PowerManager;
 
 public class SecurityAlertRoutine extends AutomationRoutine {
     public SecurityAlertRoutine() {

@@ -1,6 +1,5 @@
 package trabalhofinal.smarthome.flyweight;
 
-//package com.smarthome.flyweight;
 
 /**
  * Implementação do padrão Flyweight para compartilhar atributos de cômodos

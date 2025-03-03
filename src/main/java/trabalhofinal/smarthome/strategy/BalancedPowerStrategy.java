@@ -2,13 +2,8 @@
  * Estratégia: Modo balanceado
  */
 package trabalhofinal.smarthome.strategy;
-//package com.smarthome.strategy;
 
 import trabalhofinal.smarthome.devices.AbstractDevice;
-import trabalhofinal.smarthome.devices.LightDevice;
-import trabalhofinal.smarthome.devices.ThermostatDevice;
-import trabalhofinal.smarthome.devices.LightDevice;
-import trabalhofinal.smarthome.devices.ThermostatDevice;
 
 import java.util.Collection;
 import java.util.stream.Collectors;

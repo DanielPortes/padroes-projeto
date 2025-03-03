@@ -2,11 +2,9 @@
  * Rotina baseada em tempo
  */
 package trabalhofinal.smarthome.automation;
-//package com.smarthome.automation;
 
 import trabalhofinal.smarthome.core.HomeCentral;
 import trabalhofinal.smarthome.core.Room;
-import trabalhofinal.smarthome.visitor.Room;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -38,7 +36,7 @@ public class MorningRoutine extends AutomationRoutine {
         StringBuilder result = new StringBuilder();
 
         for (String roomName : targetRooms) {
-            Optional<trabalhofinal.smarthome.visitor.Room> room = HomeCentral.getInstance().getRoomManager().getRoomByName(roomName);
+            Optional<Room> room = HomeCentral.getInstance().getRoomManager().getRoomByName(roomName);
 
             if (room.isPresent()) {
                 result.append("Activating room: ").append(roomName).append("\n");

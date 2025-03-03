@@ -1,15 +1,10 @@
 package trabalhofinal.smarthome.automation;
 
-//package com.smarthome.automation;
 
 import trabalhofinal.smarthome.core.HomeCentral;
 import trabalhofinal.smarthome.observer.HomeEvent;
 import trabalhofinal.smarthome.observer.Observer;
-import trabalhofinal.smarthome.strategy.PowerManager;
-//import trabalhofinal.smarthome.visitor.Room;
 
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.logging.Logger;
 
 /**

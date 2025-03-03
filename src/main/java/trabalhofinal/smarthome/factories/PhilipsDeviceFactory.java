@@ -3,12 +3,9 @@
  */
 
 package trabalhofinal.smarthome.factories;
-//package com.smarthome.factories;
 
 import trabalhofinal.smarthome.devices.LightDevice;
-import trabalhofinal.smarthome.devices.PhilipsImplementation;
 import trabalhofinal.smarthome.devices.ThermostatDevice;
-import trabalhofinal.smarthome.devices.PhilipsImplementation;
 
 public class PhilipsDeviceFactory implements DeviceFactory {
     @Override

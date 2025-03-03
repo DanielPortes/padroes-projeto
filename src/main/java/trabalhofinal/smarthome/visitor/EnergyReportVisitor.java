@@ -2,13 +2,11 @@
  * Implementação concreta de Visitor para relatórios de energia
  */
 package trabalhofinal.smarthome.visitor;
-//package com.smarthome.visitor;
 
 import trabalhofinal.smarthome.core.Room;
+import trabalhofinal.smarthome.decorators.EnergyMonitoringDecorator;
 import trabalhofinal.smarthome.devices.LightDevice;
 import trabalhofinal.smarthome.devices.ThermostatDevice;
-import trabalhofinal.smarthome.decorators.EnergyMonitoringDecorator;
-import trabalhofinal.smarthome.decorators.EnergyMonitoringDecorator;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,8 +27,8 @@ public class EnergyReportVisitor implements HomeVisitor {
         report.append("  Estimated Power: ").append(String.format("%.2f", energyUsage)).append(" Watts\n");
 
         // Verificar se é um dispositivo com monitoramento de energia
-        if (light instanceof trabalhofinal.smarthome.decorators.EnergyMonitoringDecorator) {
-            trabalhofinal.smarthome.decorators.EnergyMonitoringDecorator monitoredLight = (trabalhofinal.smarthome.decorators.EnergyMonitoringDecorator) light;
+        if (light instanceof EnergyMonitoringDecorator) {
+            EnergyMonitoringDecorator monitoredLight = (EnergyMonitoringDecorator) light;
             report.append("  Measured Power: ").append(String.format("%.2f", monitoredLight.getCurrentPowerUsage())).append(" Watts\n");
         }
 
@@ -50,8 +48,8 @@ public class EnergyReportVisitor implements HomeVisitor {
         report.append("  Estimated Power: ").append(String.format("%.2f", energyUsage)).append(" Watts\n");
 
         // Verificar se é um dispositivo com monitoramento de energia
-        if (thermostat instanceof trabalhofinal.smarthome.decorators.EnergyMonitoringDecorator) {
-            trabalhofinal.smarthome.decorators.EnergyMonitoringDecorator monitoredThermostat = (trabalhofinal.smarthome.decorators.EnergyMonitoringDecorator) thermostat;
+        if (thermostat instanceof EnergyMonitoringDecorator) {
+            EnergyMonitoringDecorator monitoredThermostat = (EnergyMonitoringDecorator) thermostat;
             report.append("  Measured Power: ").append(String.format("%.2f", monitoredThermostat.getCurrentPowerUsage())).append(" Watts\n");
         }
 
@@ -63,7 +61,7 @@ public class EnergyReportVisitor implements HomeVisitor {
         double roomEnergy = 0.0;
 
         // Calcular energia usada por todos os dispositivos no cômodo
-        for (com.smarthome.devices.AbstractDevice device : room.getDevices()) {
+        for (trabalhofinal.smarthome.devices.AbstractDevice device : room.getDevices()) {
             if (device instanceof LightDevice) {
                 roomEnergy += estimateEnergyUsage((LightDevice) device);
             } else if (device instanceof ThermostatDevice) {

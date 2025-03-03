@@ -2,7 +2,6 @@
  * Exemplo de Subsistema: Controlador de Presença
  */
 package trabalhofinal.smarthome.mediator;
-//package com.smarthome.mediator;
 
 import java.util.logging.Logger;
 

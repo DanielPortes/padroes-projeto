@@ -1,9 +1,7 @@
 package trabalhofinal.smarthome.decorators;
 
 import trabalhofinal.smarthome.devices.AbstractDevice;
-import trabalhofinal.smarthome.devices.DeviceImplementation;
 import trabalhofinal.smarthome.states.DeviceState;
-import trabalhofinal.smarthome.core.HomeCentral;
 
 /**
  * Decorator base para adicionar funcionalidades aos dispositivos

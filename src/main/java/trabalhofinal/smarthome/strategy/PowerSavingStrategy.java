@@ -1,10 +1,7 @@
 
 package trabalhofinal.smarthome.strategy;
-//package com.smarthome.strategy;
 
 import trabalhofinal.smarthome.devices.AbstractDevice;
-import trabalhofinal.smarthome.devices.ThermostatDevice;
-import trabalhofinal.smarthome.devices.LightDevice;
 
 import java.util.Collection;
 

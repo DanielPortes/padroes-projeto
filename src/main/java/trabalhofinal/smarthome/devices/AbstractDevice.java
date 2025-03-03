@@ -1,9 +1,9 @@
 package trabalhofinal.smarthome.devices;
 
-//package com.smarthome.devices;
 
 import trabalhofinal.smarthome.states.DeviceState;
 import trabalhofinal.smarthome.states.OffState;
+import trabalhofinal.smarthome.visitor.Visitable;
 
 import java.util.UUID;
 
@@ -11,7 +11,7 @@ import java.util.UUID;
  * Implementação do padrão Bridge para separar abstração de dispositivos
  * de suas implementações concretas de fabricantes específicos.
  */
-public abstract class AbstractDevice {
+public abstract class AbstractDevice implements Visitable {
     private final String id;
     private final String name;
     private final DeviceImplementation implementation;
@@ -64,5 +64,15 @@ public abstract class AbstractDevice {
                 state.getName(),
                 implementation.getVendorInfo()
         );
+    }
+
+    @Override
+    public String accept(trabalhofinal.smarthome.visitor.HomeVisitor visitor) {
+        if (this instanceof LightDevice) {
+            return visitor.visitLight((LightDevice) this);
+        } else if (this instanceof ThermostatDevice) {
+            return visitor.visitThermostat((ThermostatDevice) this);
+        }
+        return "Unknown device type";
     }
 }

@@ -3,14 +3,8 @@
  * Manipulador para comandos de dispositivos
  */
 package trabalhofinal.smarthome.command;
-//package com.smarthome.command;
 
-//import com.smarthome.core.DeviceManager;
-//import com.smarthome.core.HomeCentral;
-//import com.smarthome.devices.AbstractDevice;
-import trabalhofinal.smarthome.core.DeviceManager;
-import trabalhofinal.smarthome.core.HomeCentral;
-import trabalhofinal.smarthome.visitor.AbstractDevice;
+import trabalhofinal.smarthome.devices.AbstractDevice;
 
 import java.util.Optional;
 
@@ -19,7 +13,7 @@ public class DeviceCommandHandler extends AbstractCommandHandler {
     public String handleCommand(Command command) {
         if (command.getType().equals("DEVICE")) {
             trabalhofinal.smarthome.core.DeviceManager deviceManager = trabalhofinal.smarthome.core.HomeCentral.getInstance().getDeviceManager();
-            Optional<trabalhofinal.smarthome.visitor.AbstractDevice> device = deviceManager.getDeviceByName(command.getTarget());
+            Optional<AbstractDevice> device = deviceManager.getDeviceByName(command.getTarget());
 
             if (device.isPresent()) {
                 String action = command.getParameter("action");

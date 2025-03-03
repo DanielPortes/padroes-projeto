@@ -2,13 +2,10 @@
 /**
  * Implementação de fábrica para dispositivos Samsung
  */
-//package com.smarthome.factories;
 package trabalhofinal.smarthome.factories;
 
 import trabalhofinal.smarthome.devices.LightDevice;
-import trabalhofinal.smarthome.devices.SamsungImplementation;
 import trabalhofinal.smarthome.devices.ThermostatDevice;
-import trabalhofinal.smarthome.devices.SamsungImplementation;
 
 public class SamsungDeviceFactory implements DeviceFactory {
     @Override

@@ -3,12 +3,6 @@
  */
 package trabalhofinal.smarthome.mediator;
 
-
-//import com.smarthome.core.HomeCentral;
-//import com.smarthome.strategy.PowerManager;
-import trabalhofinal.smarthome.core.HomeCentral;
-import trabalhofinal.smarthome.strategy.PowerManager;
-
 import java.util.logging.Logger;
 
 public class PowerController implements SubSystem {

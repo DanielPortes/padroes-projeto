@@ -2,7 +2,6 @@
  * Contexto que usa a estratégia
  */
 package trabalhofinal.smarthome.strategy;
-//package com.smarthome.strategy;
 
 import trabalhofinal.smarthome.devices.AbstractDevice;
 

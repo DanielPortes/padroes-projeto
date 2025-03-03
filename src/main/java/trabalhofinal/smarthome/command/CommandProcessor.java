@@ -2,7 +2,8 @@
  * Classe que configura a cadeia de responsabilidade
  */
 package trabalhofinal.smarthome.command;
-//package com.smarthome.command;
+
+import java.util.Map;
 
 public class CommandProcessor {
     private final CommandHandler chain;

@@ -3,7 +3,6 @@
  * Factory Method para criar fábricas de dispositivos específicas
  */
 package trabalhofinal.smarthome.factories;
-//package com.smarthome.factories;
 
 import java.util.HashMap;
 import java.util.Map;
