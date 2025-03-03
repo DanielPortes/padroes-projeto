@@ -49,6 +49,9 @@ public class AutomationRoutineTest {
         central = HomeCentral.getInstance();
         philipsFactory = DeviceFactoryProducer.getFactory("PHILIPS");
 
+        // Garantir que o sistema de segurança está desarmado no início
+        central.getSecuritySystem().reset();
+
         // Criar cômodos
         bedroom = central.getRoomManager().createRoom("Test Bedroom", "Bedroom");
         kitchen = central.getRoomManager().createRoom("Test Kitchen", "Kitchen");

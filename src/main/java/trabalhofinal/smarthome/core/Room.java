@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 /**
  * Classe que representa um cômodo da casa
  */
-public class Room  implements Visitable {
+public class Room implements Visitable {
     private final String id;
     private final String name;
     private final RoomAttributes attributes;
@@ -21,7 +21,6 @@ public class Room  implements Visitable {
     public Room(String name, String type) {
         this.id = UUID.randomUUID().toString();
         this.name = name;
-        // Usando o Flyweight para atributos compartilhados
         this.attributes = RoomAttributesFactory.getRoomAttributes(type);
         this.devices = new ArrayList<>();
     }
@@ -57,17 +56,22 @@ public class Room  implements Visitable {
     }
 
     public String turnAllDevicesOn() {
-        return devices.stream()
-                .map(device -> device.execute("ON"))
-                .collect(Collectors.joining("\n"));
+        StringBuilder results = new StringBuilder();
+        for (AbstractDevice device : devices) {
+            String result = device.execute("ON");
+            results.append(device.getName()).append(": ").append(result).append("\n");
+        }
+        return results.toString();
     }
 
     public String turnAllDevicesOff() {
-        return devices.stream()
-                .map(device -> device.execute("OFF"))
-                .collect(Collectors.joining("\n"));
+        StringBuilder results = new StringBuilder();
+        for (AbstractDevice device : devices) {
+            String result = device.execute("OFF");
+            results.append(device.getName()).append(": ").append(result).append("\n");
+        }
+        return results.toString();
     }
-
     public long getActiveDeviceCount() {
         return devices.stream().filter(AbstractDevice::isActive).count();
     }

@@ -30,15 +30,16 @@ public class MorningRoutine extends AutomationRoutine {
     protected String beforeRoutine() {
         return "Preparing for morning routine at " + LocalDateTime.now();
     }
-
     @Override
     protected String executeRoutineSteps() {
         StringBuilder result = new StringBuilder();
+        boolean atLeastOneRoomFound = false;
 
         for (String roomName : targetRooms) {
             Optional<Room> room = HomeCentral.getInstance().getRoomManager().getRoomByName(roomName);
 
             if (room.isPresent()) {
+                atLeastOneRoomFound = true;
                 result.append("Activating room: ").append(roomName).append("\n");
                 result.append(room.get().turnAllDevicesOn()).append("\n");
             } else {

@@ -18,6 +18,7 @@ public class DeviceCommandHandler extends AbstractCommandHandler {
             if (device.isPresent()) {
                 String action = command.getParameter("action");
                 if (action != null) {
+                    // Executar o comando no dispositivo e garantir que o estado seja atualizado
                     return device.get().execute(action);
                 } else {
                     return "Missing action parameter for device command";
@@ -30,5 +31,4 @@ public class DeviceCommandHandler extends AbstractCommandHandler {
         return passToNext(command);
     }
 }
-
 

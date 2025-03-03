@@ -25,6 +25,8 @@ public class CommandHandlerTest {
     @BeforeEach
     public void setup() {
         central = HomeCentral.getInstance();
+        central.getSecuritySystem().reset(); // Garantir sistema desarmado
+
         philipsFactory = DeviceFactoryProducer.getFactory("PHILIPS");
         samsungFactory = DeviceFactoryProducer.getFactory("SAMSUNG");
 
@@ -43,6 +45,10 @@ public class CommandHandlerTest {
         // Registrar dispositivos
         central.getDeviceManager().registerDevice(livingRoomLight);
         central.getDeviceManager().registerDevice(bedroomThermostat);
+
+        // Garantir que estão desligados inicialmente
+        livingRoomLight.execute("OFF");
+        bedroomThermostat.execute("OFF");
     }
 
     @Test

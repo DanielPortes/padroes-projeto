@@ -46,6 +46,11 @@ public class SecuritySystem {
         return false;
     }
 
+
+    public void reset() {
+        armed = false;
+    }
+
     public boolean isArmed() {
         return armed;
     }
