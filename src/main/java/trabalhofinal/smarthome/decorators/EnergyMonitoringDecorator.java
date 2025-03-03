@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class EnergyMonitoringDecorator extends DeviceDecorator {
+public class EnergyMonitoringDecorator extends DeviceDecorator implements EnergyMonitored {
     private double currentPowerUsage;
     private final List<EnergyUsageRecord> usageHistory;
 

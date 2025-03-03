@@ -4,6 +4,7 @@
 package trabalhofinal.smarthome.visitor;
 
 import trabalhofinal.smarthome.core.Room;
+import trabalhofinal.smarthome.decorators.EnergyMonitored;
 import trabalhofinal.smarthome.decorators.EnergyMonitoringDecorator;
 import trabalhofinal.smarthome.devices.LightDevice;
 import trabalhofinal.smarthome.devices.ThermostatDevice;
@@ -26,9 +27,9 @@ public class EnergyReportVisitor implements HomeVisitor {
         report.append("  Brightness: ").append(light.getBrightness()).append("%\n");
         report.append("  Estimated Power: ").append(String.format("%.2f", energyUsage)).append(" Watts\n");
 
-        // Verificar se é um dispositivo com monitoramento de energia
-        if (light instanceof EnergyMonitoringDecorator) {
-            EnergyMonitoringDecorator monitoredLight = (EnergyMonitoringDecorator) light;
+        // Verifica se o dispositivo tem monitoramento de energia usando instanceof com a interface
+        if (light instanceof EnergyMonitored) {
+            EnergyMonitored monitoredLight = (EnergyMonitored) light;
             report.append("  Measured Power: ").append(String.format("%.2f", monitoredLight.getCurrentPowerUsage())).append(" Watts\n");
         }
 
@@ -47,9 +48,9 @@ public class EnergyReportVisitor implements HomeVisitor {
                 String.format("%.1f", Math.abs(thermostat.getTemperature() - thermostat.getTargetTemperature()))).append("°C\n");
         report.append("  Estimated Power: ").append(String.format("%.2f", energyUsage)).append(" Watts\n");
 
-        // Verificar se é um dispositivo com monitoramento de energia
-        if (thermostat instanceof EnergyMonitoringDecorator) {
-            EnergyMonitoringDecorator monitoredThermostat = (EnergyMonitoringDecorator) thermostat;
+//         Verificar se é um dispositivo com monitoramento de energia
+        if (thermostat instanceof EnergyMonitored) {
+            EnergyMonitored monitoredThermostat = (EnergyMonitored) thermostat;
             report.append("  Measured Power: ").append(String.format("%.2f", monitoredThermostat.getCurrentPowerUsage())).append(" Watts\n");
         }
 

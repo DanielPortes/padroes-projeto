@@ -38,5 +38,10 @@ public abstract class DeviceDecorator extends AbstractDevice {
     public String execute(String command) {
         return decoratedDevice.execute(command);
     }
-}
 
+    @Override
+    public String getStatus() {
+        // Aqui está a correção chave - usar decoratedDevice ao invés de super
+        return decoratedDevice.getStatus();
+    }
+}

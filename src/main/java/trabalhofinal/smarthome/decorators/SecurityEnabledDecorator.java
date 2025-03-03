@@ -7,7 +7,7 @@ import trabalhofinal.smarthome.core.HomeCentral;
 import trabalhofinal.smarthome.devices.AbstractDevice;
 import trabalhofinal.smarthome.core.HomeCentral;
 
-public class SecurityEnabledDecorator extends DeviceDecorator {
+public class SecurityEnabledDecorator extends DeviceDecorator implements SecurityEnabled {
     private boolean securityEnabled;
 
     public SecurityEnabledDecorator(AbstractDevice decoratedDevice) {
