@@ -26,22 +26,26 @@ public abstract class DeviceDecorator extends AbstractDevice {
 
     @Override
     public void setState(DeviceState state) {
+        // Make sure both this device and the decorated device have the same state
+        super.setState(state);
         decoratedDevice.setState(state);
     }
 
     @Override
     public boolean isActive() {
+        // Always rely on the decorated device's state
         return decoratedDevice.isActive();
     }
 
     @Override
     public String execute(String command) {
+        // Execute command on decorated device and return result
         return decoratedDevice.execute(command);
     }
 
     @Override
     public String getStatus() {
-        // Aqui está a correção chave - usar decoratedDevice ao invés de super
+        // Use decorated device's status
         return decoratedDevice.getStatus();
     }
 }
